@@ -96,7 +96,7 @@ header > h1 {
 }
 
 /* This will allow a change to happen when you curse hovers over the button */
-.choice {
+.choice:hover {
     /* This is saying your curor poinyter will change */
     cursor: pointer;
     background: white;
