@@ -6,9 +6,9 @@ let computerScore = 0;
 // Links it to the html id
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
-const rock_div = document.getElementById("r");
-const sissors_div = document.getElementById("s");
-const paper_div = document.getElementById("p");
+const rock_div = document.getElementById("Rock");
+const sissors_div = document.getElementById("Sissors");
+const paper_div = document.getElementById("Paper");
 // Links it to the html class
 const scoreBoard_div = document.querySelector(".score-board");
 // Link to the paragraph
@@ -25,7 +25,17 @@ function win(user, comp) {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
 
-    result_p.innerHTML = user + " beats " + comp + " you WIN!!"
+    // Changing string size and making it a subscript
+    const smallUserWord = "user".fontsize(3).sub()
+    const compUserWord = "comp".fontsize(3).sub()
+    // if you want to get a var/function's return and put it in a string => "what ever you want to say ${function/var} and it will output the output of function/ var as a string"
+    result_p.innerHTML = user + smallUserWord + " beats " + comp + compUserWord + " you WIN!!"
+
+    // gose to CSS gets green-glow class and adds it to the user choice with the .add function, later removed after a timeout with the function remove
+    document.getElementById(user).classList.add('green-glow');
+    setTimeout(() => {
+        document.getElementById(user).classList.remove('green-glow')
+    }, 1000);
     console.log('Won');
 
 }
@@ -34,7 +44,14 @@ function draw(user, comp) {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
 
-    result_p.innerHTML = user + " draws with " + comp + " you draw!"
+    const smallUserWord = "user".fontsize(3).sub()
+    const compUserWord = "comp".fontsize(3).sub()
+
+    result_p.innerHTML = user + smallUserWord + " draws with " + comp + compUserWord + " you draw!"
+    document.getElementById(user).classList.add('grey-glow');
+    setTimeout(() => {
+        document.getElementById(user).classList.remove('grey-glow')
+    }, 1000);
     console.log('draw');
 
 }
@@ -44,7 +61,14 @@ function lose(user, comp) {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
 
-    result_p.innerHTML = user + " loses to " + comp + " you LOSE!!"
+    const smallUserWord = "user".fontsize(3).sub()
+    const compUserWord = "comp".fontsize(3).sub()
+
+    result_p.innerHTML = user + smallUserWord + " loses to " + comp + compUserWord + " you LOSE!!"
+    document.getElementById(user).classList.add('red-glow');
+    setTimeout(() => {
+        document.getElementById(user).classList.remove('red-glow')
+    }, 1000);
     console.log('lose');
 
 }
